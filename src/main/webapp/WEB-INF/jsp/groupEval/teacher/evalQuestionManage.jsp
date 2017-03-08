@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: hp
-  Date: 2017/1/5
-  Time: 11:42
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
     response.setHeader("P3P","CP=CAO PSA OUR");//p3p
