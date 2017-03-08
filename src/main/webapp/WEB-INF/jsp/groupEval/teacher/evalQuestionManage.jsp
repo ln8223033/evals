@@ -5,8 +5,9 @@
   Time: 11:42
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
+    response.setHeader("P3P","CP=CAO PSA OUR");//p3p
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
@@ -15,6 +16,7 @@
 <head>
     <base href="<%=basePath%>">
     <title>群体评测题目</title>
+
     <link href="/css/Content/bootstrap.min.css" rel="stylesheet">
     <link href="/css/Content/default.css" rel="stylesheet">
     <link href="/css/assets/dataTables.bootstrap.css" rel="stylesheet">
@@ -26,6 +28,7 @@
     <link href="/css/Content/backgroundStyle.css" rel="stylesheet">
     <link href="/css/timepicker/jquery-ui.css" rel="stylesheet">
     <link href="/css/timepicker/datetimepicker.css" rel="stylesheet">
+    <script src="/js/Scripts/layer.js"></script>
     <script src="/js/Scripts/jquery-1.10.2.min.js"></script>
     <script src="/js/Scripts/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="/js/assets/dataTables.tableTools.min.js" type="text/javascript"></script>
@@ -33,7 +36,7 @@
     <script src="/js/Scripts/jquery-ui.min.js"></script>
     <script src="/js/Scripts/jquery-ui-timepicker-addon.js"></script>
     <link href="/css/layer/layer.css" rel="stylesheet">
-    <script src="/js/Scripts/layer.js"></script>
+
 </head>
 
 <body>
@@ -43,60 +46,6 @@
         <div class="main-box">
 
             <script type="text/javascript">
-                $(function () {
-                    $("#jqGrid").jqGrid({
-                        url: '../question/list',
-                        datatype: "json",
-                        colModel: [
-                            { label: 'id', name: 'id', width: 50, key: true },
-                            { label: '是否匿名评论', name: 'anonymousComment', width: 80 },
-                            { label: '发布', name: 'autoPublish', width: 80 },
-                            { label: '评论开关', name: 'bsWitch', width: 80 },
-                            { label: '作品结束上传时间', name: 'upload Time', width: 80 },
-                            { label: '评测结束时间', name: 'endTime', width: 80 },
-                            { label: '分组方式,0为还没设置,1为教师指定，2为学生自己分组(默认教师指定)', name: 'groupMethod', width: 80 },
-                            { label: '每组人数(默认1人)', name: 'groupSize', width: 80 },
-                            { label: '是否可以多次评论', name: 'multiComment', width: 80 },
-                            { label: '评测题目', name: 'evalTitle', width: 80 },
-                            { label: '是否公布结果', name: 'publishResult', width: 80 },
-                            { label: '开始时间', name: 'startTime', width: 80 },
-                            { label: '出题人', name: 'ownerId', width: 80 },
-                            { label: '教学班级id', name: 'teachingClassId', width: 80 },
-                            { label: '群体评测题目id', name: 'groupEvalQuestionId', width: 80 },
-                            { label: '评测的详细内容', name: 'evalDetail', width: 80 },
-                            { label: '分组结束时间', name: 'groupTime', width: 80 },
-                            { label: '评论任务所需评论组数，默认为3组', name: 'checkTaskGroupCount', width: 80 },
-                            { label: '是否已分组', name: 'assignState', width: 80 },
-                            { label: '状态', name: 'status', width: 80 }
-                        ],
-                        viewrecords: true,
-                        height: 385,
-                        rowNum: 10,
-                        rowList : [10,30,50],
-                        rownumbers: true,
-                        rownumWidth: 25,
-                        autowidth:true,
-                        multiselect: true,
-                        pager: "#jqGridPager",
-
-                        jsonReader : {
-                            root: "page.list",
-                            page: "page.currPage",
-                            total: "page.totalPage",
-                            records: "page.totalCount"
-                        },
-                        prmNames : {
-                            page:"page",
-                            rows:"limit",
-                            order: "order"
-                        },
-                        gridComplete:function(){
-                            //隐藏grid底部滚动条
-                            $("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" });
-                        }
-                    });
-                });
-
                 var datatable;
                 $(document).ready(function () {
                     $("#datepicker_begin").datetimepicker({
@@ -734,7 +683,168 @@
                            style="display: inline-block;">关闭共享</a>
                     </div>
 
+                    <!--表格--->
+                    <div style="margin:auto;margin-top:10px;height:600px;width:780px;border:1px #C7C7C7 solid">
+                        <div id="testpaperdt_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                            <div class="dataTables_scroll">
+                                <div class="dataTables_scrollHead"
+                                     style="overflow: hidden; position: relative; border: 0px; width: 100%;">
+                                    <div class="dataTables_scrollHeadInner"
+                                         style="box-sizing: content-box; width: 778px; padding-right: 0px;">
+                                        <table class="table table-bordered table-hover dataTable no-footer" role="grid"
+                                               style="margin-left: 0px; width: 778px;">
+                                            <thead>
+                                            <tr role="row">
+                                                <th class="text-center sorting_disabled" rowspan="1" colspan="1"
+                                                    style="width: 45px;" aria-label=" ">
+                                                    <div class="checkbox" style="margin:auto">
+                                                        <label>
+                                                            <input name="checkAll" id="checkAll" type="checkbox"
+                                                                   class="btn-sm">
+                                                            <span class="text"></span>
+                                                        </label>
+                                                    </div>
+                                                </th>
+                                                <th class="text-center sorting_desc" rowspan="1" colspan="1"
+                                                    style="width: 110px;" tabindex="0" aria-controls="testpaperdt"
+                                                    aria-label="   题目: activate to sort column ascending"
+                                                    aria-sort="descending">
+                                                    题目
+                                                </th>
+                                                <th class="text-center sorting" rowspan="1" colspan="1"
+                                                    style="width: 110px;" tabindex="0" aria-controls="testpaperdt"
+                                                    aria-label="出题人: activate to sort column ascending">
+                                                    出题人
+                                                </th>
+                                                <th class="text-center sorting" rowspan="1" colspan="1"
+                                                    style="width: 115px;" tabindex="0" aria-controls="testpaperdt"
+                                                    aria-label="出题时间: activate to sort column ascending">
+                                                    出题时间
+                                                </th>
+                                                <th class="text-center sorting" rowspan="1" colspan="1"
+                                                    style="width: 111px;" tabindex="0" aria-controls="testpaperdt"
+                                                    aria-label=" 课程 : activate to sort column ascending">
+                                                    课程
+                                                </th>
+                                                <th class="text-center sorting" rowspan="1" colspan="1"
+                                                    style="width: 110px;" tabindex="0" aria-controls="testpaperdt"
+                                                    aria-label="
+                                                    附件个数: activate to sort column ascending">
+                                                    附件个数
+                                                </th>
+                                                <th class="text-center sorting" rowspan="1" colspan="1"
+                                                    style="width: 110px;"
+                                                    tabindex="0" aria-controls="testpaperdt" aria-label="
+                                                    操作 : activate to sort column ascending">
+                                                    操作
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="dataTables_scrollBody"
+                                     style="position: relative; overflow: auto; height: 500px; width: 100%;">
+                                    <table class="table table-bordered table-hover dataTable no-footer" id="testpaperdt"
+                                           role="grid" aria-describedby="testpaperdt_info" style="width: 100%;">
+                                        <thead>
+                                        <tr role="row" style="height: 0px;">
+                                            <th class="text-center sorting_disabled" rowspan="1" colspan="1"
+                                                style="width: 45px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"
+                                                aria-label="">
+                                                <div class="dataTables_sizing" style="height:0;overflow:hidden;">
+                                                    <div class="checkbox" style="margin:auto">
+                                                        <label>
+                                                            <input name="checkAll" id="checkAll" type="checkbox"
+                                                                   class="btn-sm"><span class="text"></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </th>
+                                            <th class="text-center sorting_desc" rowspan="1" colspan="1"
+                                                style="width: 110px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"
+                                                aria-controls="testpaperdt" aria-label="
+                                题目
+                                : activate to sort column ascending" aria-sort="descending">
+                                                <div class="dataTables_sizing" style="height:0;overflow:hidden;">
+                                                    题目
+                                                </div>
+                                            </th>
+                                            <th class="text-center sorting" rowspan="1" colspan="1"
+                                                style="width: 110px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"
+                                                aria-controls="testpaperdt" aria-label="
+                                出题人
+                                : activate to sort column ascending">
+                                                <div class="dataTables_sizing" style="height:0;overflow:hidden;">
+                                                    出题人
+                                                </div>
+                                            </th>
+                                            <th class="text-center sorting" rowspan="1" colspan="1"
+                                                style="width: 115px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"
+                                                aria-controls="testpaperdt" aria-label="
+                                出题时间
+                                : activate to sort column ascending">
+                                                <div class="dataTables_sizing" style="height:0;overflow:hidden;">
+                                                    出题时间
+                                                </div>
+                                            </th>
+                                            <th class="text-center sorting" rowspan="1" colspan="1"
+                                                style="width: 111px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"
+                                                aria-controls="testpaperdt" aria-label="
+                                课程
+                                : activate to sort column ascending">
+                                                <div class="dataTables_sizing" style="height:0;overflow:hidden;">
+                                                    课程
+                                                </div>
+                                            </th>
+                                            <th class="text-center sorting" rowspan="1" colspan="1"
+                                                style="width: 110px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"
+                                                aria-controls="testpaperdt" aria-label="
+                                附件个数
+                                : activate to sort column ascending">
+                                                <div class="dataTables_sizing" style="height:0;overflow:hidden;">
+                                                    附件个数
+                                                </div>
+                                            </th>
+                                            <th class="text-center sorting" rowspan="1" colspan="1"
+                                                style="width: 110px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"
+                                                aria-controls="testpaperdt" aria-label="
+                                操作
+                                : activate to sort column ascending">
+                                                <div class="dataTables_sizing" style="height:0;overflow:hidden;">
+                                                    操作
+                                                </div>
+                                            </th>
+                                        </tr>
+                                        </thead>
 
+                                        <tbody>
+                                        <tr role="row" class="odd">
+                                            <td class=" text-center">
+                                                <div class="checkbox" style="margin:auto"><label><input name="checkItem"
+                                                                                                        type="checkbox"
+                                                                                                        value="11"
+                                                                                                        class="btn-sm"><span
+                                                        class="text">
+                                            </span>
+                                                </label>
+                                                </div>
+                                            </td>
+                                            <form action="${pageContext.request.contextPath }/question/manage"
+                                                  method="post">
+                                                <c:forEach items="${groupEvalQuestions}" var="evalQuestions">
+                                                <td class=" text-center">${evalQuestions.title }</td>
+                                                <td class=" text-center">${evalQuestions.ownerId }</td>
+                                                <td class=" text-center">${evalQuestions.createTime }</td>
+                                                <td class=" text-center">${evalQuestions.courseGroupId }</td>
+                                                <td class=" text-center">${evalQuestions.evalAttachments }</td>
+                                                <td class=" text-center">${evalQuestions.isshare }</td>
+                                                </c:forEach>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
 
                             <div class="row DTTTFooter">
                                 <div class="col-sm-6">

@@ -98,6 +98,7 @@
         });
         return _f;
     };
+    //noinspection JSAnnotator,JSAnnotator
     $.messager = {
         show: function (_11) {
             var _12 = $.extend({
@@ -141,9 +142,9 @@
         }, alert: function (_13, msg, _14, fn) {
             var _15 = "<div style="
             word -
+            //noinspection JSAnnotator,JSAnnotator
             break
             :
-            break
             -all;
             width:200
             px;
