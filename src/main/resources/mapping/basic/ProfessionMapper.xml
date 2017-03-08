@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.dbke.mapper.basic.ProfessionMapper">
+  <resultMap id="BaseResultMap" type="edu.dbke.model.basic.Profession">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="EnName" jdbcType="VARCHAR" property="enname" />
+    <result column="DirectionName" jdbcType="VARCHAR" property="directionname" />
+    <result column="DeptId" jdbcType="INTEGER" property="deptid" />
+    <result column="SchoolCampusId" jdbcType="INTEGER" property="schoolcampusid" />
+    <result column="Code" jdbcType="VARCHAR" property="code" />
+    <result column="CampusCode" jdbcType="VARCHAR" property="campuscode" />
+    <result column="Term" jdbcType="INTEGER" property="term" />
+    <result column="Degree" jdbcType="VARCHAR" property="degree" />
+    <result column="Brief" jdbcType="VARCHAR" property="brief" />
+    <result column="TypeID" jdbcType="INTEGER" property="typeid" />
+    <result column="LearningTypeID" jdbcType="INTEGER" property="learningtypeid" />
+    <result column="InDate" jdbcType="TIMESTAMP" property="indate" />
+    <result column="InUser" jdbcType="VARCHAR" property="inuser" />
+    <result column="LastEditDate" jdbcType="TIMESTAMP" property="lasteditdate" />
+    <result column="LastEdituser" jdbcType="VARCHAR" property="lastedituser" />
+    <result column="ApprovalNo" jdbcType="VARCHAR" property="approvalno" />
+    <result column="ApprovalDate" jdbcType="TIMESTAMP" property="approvaldate" />
+  </resultMap>
+</mapper>

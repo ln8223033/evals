@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.dbke.mapper.basic.SyllabusMapper">
+  <resultMap id="BaseResultMap" type="edu.dbke.model.basic.Syllabus">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="CourseName" jdbcType="VARCHAR" property="coursename" />
+    <result column="CourseEnName" jdbcType="VARCHAR" property="courseenname" />
+    <result column="InChargeOfDeptId" jdbcType="INTEGER" property="inchargeofdeptid" />
+    <result column="CourseFitProfession" jdbcType="VARCHAR" property="coursefitprofession" />
+    <result column="CourseOpenTRSectionId" jdbcType="INTEGER" property="courseopentrsectionid" />
+    <result column="PreCourse" jdbcType="VARCHAR" property="precourse" />
+    <result column="MoudleId" jdbcType="INTEGER" property="moudleid" />
+    <result column="CategroyId" jdbcType="INTEGER" property="categroyid" />
+    <result column="Credits" jdbcType="REAL" property="credits" />
+    <result column="CourseNatureld" jdbcType="INTEGER" property="coursenatureld" />
+    <result column="ExamMode" jdbcType="VARCHAR" property="exammode" />
+    <result column="InspectionProportion" jdbcType="INTEGER" property="inspectionproportion" />
+    <result column="TotalClassHours" jdbcType="INTEGER" property="totalclasshours" />
+    <result column="LectureHours" jdbcType="INTEGER" property="lecturehours" />
+    <result column="ComputerHours" jdbcType="INTEGER" property="computerhours" />
+    <result column="ExperimentHours" jdbcType="INTEGER" property="experimenthours" />
+    <result column="InternshipHours" jdbcType="INTEGER" property="internshiphours" />
+    <result column="InternshipWeek" jdbcType="INTEGER" property="internshipweek" />
+    <result column="Version" jdbcType="VARCHAR" property="version" />
+    <result column="FilePath" jdbcType="VARCHAR" property="filepath" />
+    <result column="Memo" jdbcType="VARCHAR" property="memo" />
+    <result column="InDate" jdbcType="TIMESTAMP" property="indate" />
+    <result column="InUser" jdbcType="VARCHAR" property="inuser" />
+    <result column="LastEditDate" jdbcType="TIMESTAMP" property="lasteditdate" />
+    <result column="LastEditUser" jdbcType="VARCHAR" property="lastedituser" />
+    <result column="Status" jdbcType="INTEGER" property="status" />
+    <result column="SyllabusCode" jdbcType="VARCHAR" property="syllabuscode" />
+    <result column="ApplyStatus" jdbcType="INTEGER" property="applystatus" />
+    <result column="ApproveMemo" jdbcType="VARCHAR" property="approvememo" />
+  </resultMap>
+</mapper>

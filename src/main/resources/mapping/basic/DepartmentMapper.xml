@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.dbke.mapper.basic.DepartmentMapper">
+  <resultMap id="BaseResultMap" type="edu.dbke.model.basic.Department">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="SchoolCampusId" jdbcType="INTEGER" property="schoolcampusid" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="Number" jdbcType="VARCHAR" property="number" />
+    <result column="InDate" jdbcType="TIMESTAMP" property="indate" />
+    <result column="InUser" jdbcType="VARCHAR" property="inuser" />
+    <result column="LastEditDate" jdbcType="TIMESTAMP" property="lasteditdate" />
+    <result column="LastEditUser" jdbcType="VARCHAR" property="lastedituser" />
+  </resultMap>
+</mapper>
